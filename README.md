@@ -22,7 +22,7 @@ Essa interface foi responsável por distribuir IPs via DHCP e responder consulta
 ## 2. Linux Mint – Servidor (Apache, FTP e NFS)
 
 O servidor ficou configurado com a placa de rede em Rede Interna, recebendo IP fixo através do DHCP do pfSense.
-Como o range do servidor seria de 172.16.0.50 até 172.16.0.200, esses foram os IPs que o DHCP forneceu.
+Como o range do servidor seria de 172.16.0.60 até 172.16.0.200, esses foram os IPs que o DHCP forneceu.
 
 IP final do servidor:
 👉 172.16.0.50
@@ -40,7 +40,7 @@ Servidor NFS
 A terceira VM também ficou em Rede Interna, recebendo IP automático pelo pfSense.
 
 IP final do cliente:
-👉 172.16.0.51
+👉 172.16.0.60
 
 Essa máquina foi usada para testar todos os serviços implantados.
 
@@ -86,7 +86,7 @@ Foram adicionados dois registros HOST:
 
 servidor.lan → 172.16.0.50
 
-cliente.lan → 172.16.0.51
+cliente.lan → 172.16.0.60 - primeiro do range
 
 Assim, basta digitar servidor.lan na rede para resolver o IP do servidor.
 
@@ -168,6 +168,7 @@ sudo apt install nfs-kernel-server
 Criação da pasta compartilhada:
 
 sudo mkdir -p /srv/nfs/shared
+
 sudo chmod 777 /srv/nfs/shared
 
 
@@ -184,6 +185,7 @@ Inserido:
 Aplicar:
 
 sudo exportfs -ra
+
 sudo exportfs -v
 
 No cliente (172.16.0.51)
