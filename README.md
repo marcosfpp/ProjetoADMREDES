@@ -1,6 +1,6 @@
 # ProjetoADMREDES
 
-#### Marcos Felipe Pessoa Pacheco e Marcus Vinicius
+#### Marcos Felipe Pessoa Pacheco e Marcus Vinicius Nunes
 
 Trabalho final desenvolvido para a disciplina de Administração de Redes de Computadores, no curso de Sistemas de Informação. O objetivo do projeto foi montar um ambiente de rede virtualizado utilizando pfSense e Linux Mint, configurando serviços essenciais como DHCP, DNS, Apache, FTP e NFS. A topologia foi criada no VirtualBox e todas as máquinas foram isoladas em uma rede interna exclusiva para testes.
 
@@ -167,8 +167,8 @@ sudo apt install nfs-kernel-server
 
 Criação da pasta compartilhada:
 
-sudo mkdir -p /servidor/pastacomp
-sudo chmod 777 /servidor/pastacomp
+sudo mkdir -p /srv/nfs/shared
+sudo chmod 777 /srv/nfs/shared
 
 
 Configuração no arquivo:
@@ -178,7 +178,7 @@ sudo nano /etc/exports
 
 Inserido:
 
-/servidor/pastacomp 172.16.0.0/24(rw,sync,no_root_squash)
+/srv/nfs/sharaed 172.16.0.0/24(rw,sync,no_subtree_check)
 
 
 Aplicar:
@@ -188,28 +188,28 @@ sudo exportfs -v
 
 No cliente (172.16.0.51)
 
-Instalar suporte ao NFS:
+Instalar suporte ao NFS - no cliente:
 
 sudo apt install nfs-common
 
 
 Criar ponto de montagem:
 
-sudo mkdir -p /cliente/pastacomp
+sudo mkdir -p /mnt/nfs_teste
 
 
 Montar diretório:
 
-sudo mount 172.16.0.50:/servidor/pastacomp /cliente/pastacomp
+sudo mount 172.16.0.50:/srv/nfs/shared /mnt/nfs_teste
 
 
 ## 7. Testes do NFS
 
 Teste simples:
 
-Criar um arquivo no servidor em /servidor/pastacomp
+Criar um arquivo no servidor em /srv/nfs/shared
 
-Abrir no cliente /cliente/pastacomp
+Abrir no cliente /mnt/nfs_teste
 
 O arquivo aparece automaticamente
 
