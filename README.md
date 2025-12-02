@@ -1,6 +1,6 @@
 # ProjetoADMREDES
 
-### Marcos Felipe Pessoa Pacheco e Marcus Vinicius
+#### Marcos Felipe Pessoa Pacheco e Marcus Vinicius
 
 Trabalho final desenvolvido para a disciplina de Administração de Redes de Computadores, no curso de Sistemas de Informação. O objetivo do projeto foi montar um ambiente de rede virtualizado utilizando pfSense e Linux Mint, configurando serviços essenciais como DHCP, DNS, Apache, FTP e NFS. A topologia foi criada no VirtualBox e todas as máquinas foram isoladas em uma rede interna exclusiva para testes.
 
