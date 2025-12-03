@@ -204,6 +204,16 @@ Montar diretório:
 
 sudo mount 172.16.0.50:/srv/nfs/shared /mnt/nfs_teste
 
+Realizar montagem automática:
+
+sudo nano /etc/fstab
+
+e adicionei a linha
+
+172.16.0.50:/srv/nfs/shared          /mnt/nfs_teste                          nfs                    defaults               0                  0
+ip máquina servidor+diretorio     diretorio de montagem local       sistema de arquivo nfs       configuração padrão       negar dump - negar verificação fsck
+
+
 
 ## 7. Testes do NFS
 
@@ -218,6 +228,7 @@ O arquivo aparece automaticamente
 Movimentações funcionam nos dois lados
 
 Isso confirmou o compartilhamento NFS.
+
 
 Conclusão
 
